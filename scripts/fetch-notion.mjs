@@ -13,6 +13,7 @@ const token = process.env.NOTION_TOKEN
 const databaseId = process.env.NOTION_DATABASE_ID
 
 if (!token || !databaseId) {
+  await mkdir(path.dirname(generatedPath), { recursive: true })
   await copyFile(samplePath, generatedPath)
   console.log('[fetch-notion] 未配置 NOTION_TOKEN,使用内置示例文章。')
   process.exit(0)
