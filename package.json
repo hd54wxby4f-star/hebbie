@@ -1,0 +1,28 @@
+{
+  "name": "hebbie",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "hebbie 的个人主页与博客",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/fetch-notion.mjs && vite build && node scripts/generate-rss.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "highlight.js": "^11.11.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0"
+  },
+  "devDependencies": {
+    "@notionhq/client": "^2.3.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "dotenv": "^16.5.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
+  }
+}

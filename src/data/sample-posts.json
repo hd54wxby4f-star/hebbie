@@ -1,0 +1,119 @@
+[
+  {
+    "id": "post-1",
+    "slug": "dark-tech-portfolio",
+    "title": "从零搭建暗色科技感个人网站",
+    "excerpt": "深色基底、渐变光晕、玻璃拟态——一套可复用的暗色科技感设计配方,以及背后的实现细节。",
+    "tags": ["前端", "设计", "React"],
+    "cover": "/images/post-1.png",
+    "date": "2026-07-28",
+    "pinned": true,
+    "content": [
+      { "type": "paragraph", "text": "暗色科技感并不是简单的「把背景换成黑色」。真正的质感来自层次的堆叠:深蓝黑的基底、克制的蓝紫渐变光晕、半透明的玻璃卡片,以及细腻的描边与阴影。" },
+      { "type": "heading", "level": 2, "text": "一、定下色彩系统" },
+      { "type": "bulleted_list", "text": "背景:以 #070b14 这类偏蓝的极深色为底,避免纯黑带来的死板。" },
+      { "type": "bulleted_list", "text": "主色:蓝紫渐变 #6366f1 → #a855f7,用于光晕、强调与按钮。" },
+      { "type": "bulleted_list", "text": "文字:主文字用高亮白,次级文字用 60% 透明度,保持对比度。" },
+      { "type": "heading", "level": 2, "text": "二、用光晕制造纵深感" },
+      { "type": "paragraph", "text": "在页面背景铺几个大尺寸、高模糊的径向渐变圆形,配合低透明度,就能在纯色背景下做出「有光」的感觉。实现上只需要绝对定位 + filter: blur()。" },
+      { "type": "code", "language": "css", "text": ".glow {\n  position: absolute;\n  width: 480px;\n  height: 480px;\n  border-radius: 50%;\n  background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);\n  filter: blur(60px);\n  pointer-events: none;\n}" },
+      { "type": "heading", "level": 2, "text": "三、玻璃拟态卡片" },
+      { "type": "paragraph", "text": "卡片使用 rgba 白底 + backdrop-filter 模糊 + 1px 渐变描边,模拟磨砂玻璃。注意移动端 backdrop-filter 性能,可以降级为半透明实色。" },
+      { "type": "quote", "text": "高级感不是元素越多,而是每个元素都出现在它该在的位置。" },
+      { "type": "divider" },
+      { "type": "paragraph", "text": "这套配方同样适用于本博客的每一处组件,感兴趣的话可以去项目里看样式源码。" }
+    ]
+  },
+  {
+    "id": "post-2",
+    "slug": "notion-as-blog-backend",
+    "title": "我把 Notion 变成了博客后台",
+    "excerpt": "不想维护 CMS?用 Notion 写文章,构建时自动拉取并生成静态页面,写作体验和发布体验都拉满。",
+    "tags": ["工具", "Notion", "自动化"],
+    "cover": "/images/post-2.png",
+    "date": "2026-06-15",
+    "pinned": false,
+    "content": [
+      { "type": "callout", "text": "核心思路:构建时从 Notion 数据库拉取文章,转成静态 JSON 数据,再由前端渲染成页面。全程无需维护数据库和后台。" },
+      { "type": "paragraph", "text": "Notion 的写作体验无可挑剔:支持代码块、图片、表格、拖拽排序。只要在数据库里维护标题、slug、标签和发布日期,构建脚本就能自动完成剩下的工作。" },
+      { "type": "heading", "level": 2, "text": "数据库结构" },
+      { "type": "bulleted_list", "text": "标题(Title):文章标题。" },
+      { "type": "bulleted_list", "text": "slug(Text):URL 标识,必须唯一。" },
+      { "type": "bulleted_list", "text": "摘要(Rich text):列表页展示。" },
+      { "type": "bulleted_list", "text": "标签(Multi-select):文章标签。" },
+      { "type": "bulleted_list", "text": "封面(URL):封面图片地址。" },
+      { "type": "bulleted_list", "text": "发布日期(Date):用于排序与归档。" },
+      { "type": "heading", "level": 2, "text": "本地示例数据兜底" },
+      { "type": "paragraph", "text": "没有配置 Token 时,构建脚本会自动使用内置示例文章,保证站点在任何环境下都能跑起来。配置了 Notion Token 后,拉取结果会覆盖示例数据。" },
+      { "type": "code", "language": "bash", "text": "# 构建时自动拉取 Notion 文章\nnpm run build" }
+    ]
+  },
+  {
+    "id": "post-3",
+    "slug": "ai-assisted-coding",
+    "title": "AI 辅助编程:效率翻倍的实践心得",
+    "excerpt": "不是取代,而是协作。分享我在日常开发中使用 AI 助手的提示词技巧、工作流和避坑指南。",
+    "tags": ["AI", "工程实践"],
+    "cover": "/images/post-3.png",
+    "date": "2026-05-20",
+    "pinned": false,
+    "content": [
+      { "type": "paragraph", "text": "用了半年 AI 编程助手后,我的结论是:它不会取代工程师,但会用 AI 的工程师会取代不会用的。关键在于把它当成一个「快速起草 + 严格审查」的结对伙伴。" },
+      { "type": "heading", "level": 2, "text": "给 AI 足够的上下文" },
+      { "type": "paragraph", "text": "模糊的提问只会得到模糊的回答。把相关文件路径、期望行为、边界条件都写清楚,效果立竿见影。" },
+      { "type": "code", "language": "text", "text": "请修改 src/lib/posts.ts 中的 loadPosts 函数:\n1. 支持按标签过滤\n2. 未匹配时返回空数组而不是抛错\n3. 保持现有返回类型不变" },
+      { "type": "heading", "level": 2, "text": "小步验证" },
+      { "type": "numbered_list", "text": "先让 AI 给出方案而不是直接写代码。" },
+      { "type": "numbered_list", "text": "每个小改动立即运行测试或构建。" },
+      { "type": "numbered_list", "text": "对 AI 生成的代码,重点审查边界条件与安全问题。" },
+      { "type": "quote", "text": "AI 擅长把想法变成初稿,人负责把初稿变成可靠的产品。" },
+      { "type": "divider" },
+      { "type": "paragraph", "text": "希望这些实践对你也有启发,欢迎在评论区交流你的工作流。" }
+    ]
+  },
+  {
+    "id": "post-4",
+    "slug": "typescript-type-gymnastics",
+    "title": "TypeScript 类型体操入门指南",
+    "excerpt": "从工具类型到条件类型,用几个实战例子搞懂 TypeScript 类型编程的核心套路。",
+    "tags": ["TypeScript", "前端"],
+    "cover": "/images/post-4.png",
+    "date": "2026-04-02",
+    "pinned": false,
+    "content": [
+      { "type": "paragraph", "text": "类型体操听起来吓人,其实核心就几个工具:泛型、条件类型、映射类型、模板字面量类型。掌握它们,就能写出可复用的类型工具。" },
+      { "type": "heading", "level": 2, "text": "从 Partial 讲起" },
+      { "type": "paragraph", "text": "内置的 Partial 把对象的所有属性变成可选,它的实现就是一次映射类型的遍历:" },
+      { "type": "code", "language": "typescript", "text": "type MyPartial<T> = {\n  [K in keyof T]?: T[K]\n}\n\ntype User = { name: string; age: number }\ntype PartialUser = MyPartial<User>\n// { name?: string; age?: number }" },
+      { "type": "heading", "level": 2, "text": "条件类型与推断" },
+      { "type": "paragraph", "text": "条件类型配合 infer 可以提取函数的返回类型,这是很多高级工具的基础:" },
+      { "type": "code", "language": "typescript", "text": "type ReturnTypeOf<T> =\n  T extends (...args: any[]) => infer R ? R : never\n\ntype A = ReturnTypeOf<() => string>  // string" },
+      { "type": "quote", "text": "类型系统是最好的文档,它不会过时,也不会撒谎。" },
+      { "type": "divider" },
+      { "type": "paragraph", "text": "建议从改写内置工具类型开始练习,一步一步理解每个关键字的作用。" }
+    ]
+  },
+  {
+    "id": "post-5",
+    "slug": "design-system-principles",
+    "title": "高级感设计系统的 5 个原则",
+    "excerpt": "留白、层级、节奏、克制、一致——把抽象的设计感拆成可执行的原则。",
+    "tags": ["设计", "产品"],
+    "cover": "/images/post-5.png",
+    "date": "2026-02-10",
+    "pinned": false,
+    "content": [
+      { "type": "paragraph", "text": "「高级感」经常被当作玄学,其实可以拆成五个可执行的原则。做到一半以上,页面质感就会有明显提升。" },
+      { "type": "numbered_list", "text": "留白:元素之间留足呼吸空间,宁可空,不要挤。" },
+      { "type": "numbered_list", "text": "层级:用字号、字重、颜色明度区分主次,一屏只有一个视觉主角。" },
+      { "type": "numbered_list", "text": "节奏:间距、圆角、动画时长使用统一的数值阶梯,形成可感知的韵律。" },
+      { "type": "numbered_list", "text": "克制:每页最多一到两个强调色,动效服务于信息,而非表演。" },
+      { "type": "numbered_list", "text": "一致:同一类组件全局只有一种形态,减少用户的认知负担。" },
+      { "type": "heading", "level": 2, "text": "落地为设计令牌" },
+      { "type": "paragraph", "text": "把这些原则落成 CSS 变量,组件只引用变量,不写魔法数字,后续改主题就是改一套变量的事。" },
+      { "type": "code", "language": "css", "text": ":root {\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 16px;\n  --radius-sm: 8px;\n  --radius-md: 14px;\n  --radius-lg: 22px;\n  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);\n}" },
+      { "type": "divider" },
+      { "type": "paragraph", "text": "这套原则就是本博客设计语言的基础,希望对你做自己的作品集也有帮助。" }
+    ]
+  }
+]
