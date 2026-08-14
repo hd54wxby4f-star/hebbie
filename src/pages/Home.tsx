@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { asset } from '../lib/asset'
 import { siteConfig } from '../config'
 import { getSortedPosts, getPinnedPosts } from '../lib/posts'
 import PostCard from '../components/PostCard'
@@ -15,12 +16,12 @@ export default function Home() {
       <section className="hero">
         <div
           className="hero-bg"
-          style={{ backgroundImage: "url('/images/hero.png')" }}
+          style={{ backgroundImage: `url(${asset('/images/hero.png')})` }}
           aria-hidden="true"
         />
         <div className="hero-content">
           <div className="hero-avatar">
-            <img src="/images/avatar.png" alt={`${siteConfig.name} 的头像`} />
+            <img src={asset('/images/avatar.png')} alt={`${siteConfig.name} 的头像`} />
           </div>
           <p className="hero-eyebrow">Hi, I'm</p>
           <h1 className="hero-title">{siteConfig.name}</h1>

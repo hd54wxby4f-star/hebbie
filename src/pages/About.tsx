@@ -1,3 +1,4 @@
+import { asset } from '../lib/asset'
 import { siteConfig } from '../config'
 import Reveal from '../components/Reveal'
 
@@ -11,7 +12,7 @@ export default function About() {
 
       <Reveal>
         <div className="about-card glass">
-          <img src="/images/avatar.png" alt={`${siteConfig.name} 的头像`} className="about-avatar" />
+          <img src={asset('/images/avatar.png')} alt={`${siteConfig.name} 的头像`} className="about-avatar" />
           <div className="about-info">
             <h2 className="about-name">{siteConfig.name}</h2>
             <p className="about-tagline">{siteConfig.tagline}</p>

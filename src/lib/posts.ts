@@ -1,7 +1,10 @@
 import postsJson from '../generated/posts.json'
+import { asset } from './asset'
 import type { Post } from '../types'
 
-export const posts = postsJson as Post[]
+export const posts = (postsJson as Post[]).map((p) =>
+  p.cover ? { ...p, cover: asset(p.cover) } : p,
+)
 
 export function getSortedPosts(): Post[] {
   return [...posts].sort(
